@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>BSMH Insulin Downtime Calculator</title>
+  <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel='stylesheet' href='css/style.css' />
+	<!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    <!--<link rel="icon" sizes="196x196" href="/images/icon.png">-->
+  </head>
+  <body>
+  <!-- JavaScript -->
+ 
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  
+
+<div class="container" >
+	<br>
+	<div align="center">
+		<h1> Insulin Downtime Calculator</h1>
+		<br><br>
+     <div>
+		<div class="form-group w-75" align="center">
+		  <div class="form-row" align="center">
+				<label class="inputLabel" for="drugInput"><b>Protocol Action</b></label><br>
+					<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+					  <input type="radio" class="btn-check protocol-action" name="btnradio" id="btnradio1" value="1" autocomplete="off" onclick="radioCheck(this.value)">
+					  <label class="btn btn-outline-primary" for="btnradio1">Initiate / Reset</label>
+
+					  <input type="radio" class="btn-check protocol-action" name="btnradio" id="btnradio2" value="2" autocomplete="off" onclick="radioCheck(this.value)">
+					  <label class="btn btn-outline-primary" for="btnradio2">Rate Adjust</label>
+
+					  <input type="radio" class="btn-check protocol-action" name="btnradio" id="btnradio3" value="3" autocomplete="off" onclick="radioCheck(this.value)">
+					  <label class="btn btn-outline-primary" for="btnradio3">Resume After Pause</label>
+					</div>
+		  </div>
+		  <br>
+		  	<div class="form-row" align="center">
+				<label class="inputLabel" for="drugInput"><b>Target Range</b></label><br>
+					<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+					  <input type="checkbox" class="btn-check range" name="btnrange" id="btnRange1" value="1" autocomplete="off" onclick="oneCheck(this.value)">
+					  <label class="btn btn-outline-secondary" for="btnRange1">CT Surgery & OB<br>100-130</label>
+
+					  <input type="checkbox" class="btn-check range" name="btnrange" id="btnRange2" value="2" autocomplete="off" onclick="oneCheck(this.value)">
+					  <label class="btn btn-outline-secondary" for="btnRange2">Critical Care<br>110-150</label>
+
+					  <input type="checkbox" class="btn-check range" name="btnrange" id="btnRange3" value="3" autocomplete="off" onclick="oneCheck(this.value)">
+					  <label class="btn btn-outline-secondary" for="btnRange3">DKA<br>150-200</label>
+					  
+					  <input type="checkbox" class="btn-check range" name="btnrange" id="btnRange4" value="4" autocomplete="off" onclick="oneCheck(this.value)">
+					  <label class="btn btn-outline-secondary" for="btnRange4">HHS<br>200-300</label>
+					  
+					  <input type="checkbox" class="btn-check range" name="btnrange" id="btnRange5" value="5" autocomplete="off" onclick="oneCheck(this.value)">
+					  <label class="btn btn-outline-secondary" for="btnRange5">Hyperglycemia<br>140-180</label>
+					</div>
+		  </div>
+			<br>
+		  	<div class="form-row" align="center">
+				<label class="inputLabel" for="drugInput"><b>Is Patient Tolerating a PO Diet?</b></label><br>
+					<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+					  <input type="checkbox" class="btn-check food" name="btnfood" id="btnFood1" value="6" autocomplete="off" onclick="oneCheck(this.value)">
+					  <label class="btn btn-outline-secondary" for="btnFood1">Yes</label>
+					</div>  
+					<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+					  <input type="checkbox" class="btn-check food" name="btnfood" id="btnFood2" value="7" autocomplete="off" onclick="oneCheck(this.value)">
+					  <label class="btn btn-outline-secondary" for="btnFood2">No</label>
+					</div>
+		  </div>
+		  <br><br>
+		  	<div id="prevGlu" class="w-50" hidden>
+			  <label class="inputLabel" for="drugInput"><b>Previous Glucose</b></label>
+			  <input type="number" class="form-control input-lg" id="prevGluVal" placeholder="" onkeypress="hideData()">
+			</div>
+			<div id ="curGlu" class="col w-50">
+	          <label class="inputLabel" for="drugInput"><b>Current Glucose</b></label>
+			  <input type="number" class="form-control input-lg" id="curGluVal"  placeholder="" onkeypress="hideData()">
+			</div>
+
+		  	<div id="prevISC" class="w-50" hidden>
+			<br><br>
+			  <label class="inputLabel" for="drugInput"><b>Previous ISC</b></label>
+			  <input type="number" class="form-control input-lg" id="prevISCVal"  placeholder="" onkeypress="hideData(1)">
+			</div>
+			<div id="gluHold" class="form-row" align="center" hidden>
+			<br>
+				<label class="inputLabel" for="drugInput"><b>Did the calculator previously instruct rechecking blood glucose every 15 minutes?</b></label><br>
+					<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+					  <input type="checkbox" class="btn-check food" name="btnfifteen" id="btnFifteen1" value="8" autocomplete="off" onclick="oneCheck(this.value)">
+					  <label class="btn btn-outline-secondary" for="btnFifteen1">Yes</label>
+					</div>  
+					<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+					  <input type="checkbox" class="btn-check food" name="btnfifteen" id="btnFifteen2" value="9" autocomplete="off" onclick="oneCheck(this.value)">
+					  <label class="btn btn-outline-secondary" for="btnFifteen2">No</label>
+			</div>
+		  </div>
+			<br>
+		<button type="button" class="btn btn-primary" onclick="runCalc()">Calculate</button>
+		</div>
+		</div>
+	<div id="displayError" class="w-50" hidden>
+		<br><br>
+		<div class="alert alert-danger" role="alert" >
+		  Enter required information above
+		</div>
+	</div>
+	<div id="displayDiet" class="w-50" hidden>
+		<br><br>
+		<div class="alert alert-warning" role="alert" >
+		  Notify provider if order for mealtime subcutaneous insulin coverage is not already in place.<br><br>The calculator does <strong>NOT</strong> adjust for PO intake.
+		</div>
+	</div>
+	<div id="displayISCWarn" class="w-50" hidden>
+		<br><br>
+		<div class="alert alert-warning" role="alert" >
+		You have entered a high <strong>Previous ISC</strong> value.<br>Please double check that the value was entered correctly.
+	</div>
+	</div>
+	<div id="displayData" hidden>
+	<br><br>
+		<label class="inputLabel" for="card"><b>Dosing Information</b></label><br>
+		<div class="card w-50">
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item"><b>Bolus (Units) *Only if Ordered*</b><br><span id="bolus"></span></li>
+				<li class="list-group-item"><b>Infusion Dose (Units/hr)</b><br><span id="dose"></span></li>
+			 </ul>
+		</div>
+		<br>
+		<label class="inputLabel" for="card"><b>Calculation Information</b></label><br>
+		<div class="card w-50" >
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item"><b>Equation</b><br>Dose = ISC * (Glucose - 60)<br><p style='font-size: small'>[Max Glucose: 601]</p></li>
+				<li class="list-group-item"><b>Calculated ISC</b><br><span id="ISCDisp"></span></li>
+			 </ul>
+		</div>
+	</div>
+	</div>
+</div>
+<br><br><br>
+  </body>
+	<script src='javascripts/insulinCalc.js'></script>
+	<script src='javascripts/javascripts.js'></script>
+</html>

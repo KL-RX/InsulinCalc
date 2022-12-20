@@ -1,0 +1,56 @@
+.btn-block {
+	font-size: 22px;
+	font-weight: bold;
+}
+
+.modal-backdrop
+{
+    opacity:0.9 !important;
+}
+
+li {
+	font-size: 20px;
+}
+
+.list-group-item.active{
+	background: #e1ed37;
+	color: black;
+}
+
+body{
+background: #ccd6e6;
+}
+
+.input-lg {
+	height: 60px;
+	font-weight: bold;
+    font-size: 27px; /* or larger */
+}
+
+l.inputLabel {
+	font-weight: bold;
+    font-size: 27px; /* or larger */
+}
+
+.modal-title{
+	text-align: center;
+}
+
+.card-header{
+	font-size: 20px;
+    font-weight: 400;
+	background-color: #9ea7b5;
+}
+
+.pdfButton{
+	  text-align: center;
+}
+
+.invisible {
+	border: 0px solid black;
+}
+
+.form-control{
+	text-align: center;
+}
+/* this is the new stuff */
