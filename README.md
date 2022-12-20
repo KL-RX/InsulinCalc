@@ -1,6 +1,6 @@
 # Insulin Infusion Calculator
 
-This is a demo of a offline insulin infusion calculator that can be used to validate rate changes.
+This is a demo of an offline insulin infusion calculator that can be used to validate rate changes based on a specific algorithm.
 
 ## Getting Started
 
