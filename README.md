@@ -4,7 +4,9 @@ This is a demo of a offline insulin infusion calculator that can be used to vali
 
 ## Getting Started
 
-Just run the demo in a browser.
+Just run the demo in a browser by clicking the link below.
+
+<a href="https://kl-rx.github.io/InsulinCalc/">Demo</a>
 
 ### Prerequisites
 
