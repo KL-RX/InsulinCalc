@@ -293,16 +293,32 @@ function runCalc(){
 				document.getElementById('dose').innerHTML = "Pause Infusion and Recheck Glucose in 15 min<br>Follow Hypoglycemia Protocol<br><br>Restart infusion when BG above lower end of goal range ";
 			}else { 
 				if ((glucVal < 250) && (document.getElementById('btnRange3').checked == true || document.getElementById('btnRange4').checked == true)){
-					document.getElementById('dose').innerHTML = fmtDose + " Units/hr " + stopInf;
+					if (fmtDose < 0.05){
+						document.getElementById('dose').innerHTML = "Pause Infusion " + stopInf;
+					}else{
+						document.getElementById('dose').innerHTML = fmtDose + " Units/hr " + stopInf;
+					}
 				}else{
-					document.getElementById('dose').innerHTML = fmtDose + " Units/hr ";
+					if (fmtDose < 0.05){
+						document.getElementById('dose').innerHTML = "Pause Infusion ";
+					}else{
+						document.getElementById('dose').innerHTML = fmtDose + " Units/hr ";
+					}
 				}
 			}
 		}else{
 			if ((glucVal < 250) && (document.getElementById('btnRange3').checked == true || document.getElementById('btnRange4').checked == true)){
-				document.getElementById('dose').innerHTML = fmtDose + " Units/hr " + stopInf;
+				if (fmtDose < 0.05){
+					document.getElementById('dose').innerHTML = "Pause Infusion " + stopInf;
+				}else{
+					document.getElementById('dose').innerHTML = fmtDose + " Units/hr " + stopInf;
+				}
 			}else{
-				document.getElementById('dose').innerHTML = fmtDose + " Units/hr ";
+				if (fmtDose < 0.05){
+					document.getElementById('dose').innerHTML = "Pause Infusion ";
+				}else{
+					document.getElementById('dose').innerHTML = fmtDose + " Units/hr ";
+				}
 			}
 		}
 		
@@ -415,17 +431,33 @@ function runCalc(){
 					document.getElementById('dose').innerHTML = "Pause Infusion and Recheck Glucose in 15 min<br><br>Restart infusion when BG above lower end of goal range " + resetISC;
 				}else{
 					if ((glucVal < 250) && (document.getElementById('btnRange3').checked == true || document.getElementById('btnRange4').checked == true)){
-						document.getElementById('dose').innerHTML = fmtDose + " Units/hr " + largeDrop + stopInf;
+						if (fmtDose < 0.05){
+							document.getElementById('dose').innerHTML = "Pause Infusion " + largeDrop + stopInf;
+						}else{
+							document.getElementById('dose').innerHTML = fmtDose + " Units/hr " + largeDrop + stopInf;
+						}
 					}else{
-						document.getElementById('dose').innerHTML = fmtDose + " Units/hr " + largeDrop;
+						if (fmtDose < 0.05){
+							document.getElementById('dose').innerHTML = "Pause Infusion " + largeDrop;
+						}else{
+							document.getElementById('dose').innerHTML = fmtDose + " Units/hr " + largeDrop;
+						}
 					}
 				}
 			}
 		}else{
 			if ((glucVal < 250) && (document.getElementById('btnRange3').checked == true || document.getElementById('btnRange4').checked == true)){
-				document.getElementById('dose').innerHTML = fmtDose + " Units/hr " + largeDrop + stopInf;
+				if (fmtDose < 0.05){
+					document.getElementById('dose').innerHTML = "Pause Infusion " + largeDrop + stopInf;
+				}else{
+					document.getElementById('dose').innerHTML = fmtDose + " Units/hr " + largeDrop + stopInf;
+				}
 			}else{
-				document.getElementById('dose').innerHTML = fmtDose + " Units/hr " + largeDrop;
+				if (fmtDose < 0.05){
+					document.getElementById('dose').innerHTML = "Pause Infusion " + largeDrop;
+				}else{
+					document.getElementById('dose').innerHTML = fmtDose + " Units/hr " + largeDrop;
+				}
 			}
 		}
 		document.getElementById('bolus').innerHTML = "No Bolus";
