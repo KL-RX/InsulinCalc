@@ -276,7 +276,7 @@ function runCalc(){
 		}
 		
 		doseVal = curISCVal*(tempVal - 60);
-		fmtDose = parseFloat(doseVal.toFixed(4));
+		fmtDose = parseFloat(doseVal.toFixed(2));
 		
 		//bolus info
 		if (glucVal >= 240){
@@ -420,7 +420,7 @@ function runCalc(){
 			
 		}
 		doseVal = curISCVal*(tempVal - 60);
-		fmtDose = parseFloat(doseVal.toFixed(4));
+		fmtDose = parseFloat(doseVal.toFixed(2));
 		
 		//dose info
 		if (glucVal < lowerVal) {
